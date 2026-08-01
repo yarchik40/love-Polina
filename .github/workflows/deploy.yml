@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v1.2.0
@@ -20,8 +21,24 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
 
           script: |
+            set -e
+
             cd ~/kama
+
+            echo "📥 Получаем изменения..."
             git pull
-            npm install
+
+            echo "📦 Устанавливаем зависимости..."
+            npm ci
+
+            echo "🔨 Собираем проект..."
             npm run build
+
+            echo "💾 Создаем резервную копию..."
+            rm -rf /var/www/love-polina.bak
+            cp -r /var/www/love-polina /var/www/love-polina.bak
+
+            echo "🚀 Публикуем новую версию..."
             cp -r dist/* /var/www/love-polina/
+
+            echo "✅ Деплой завершен!"

@@ -36,12 +36,13 @@ p{
     margin-bottom:35px;
 }
 
+
 button{
     padding:15px 35px;
     font-size:20px;
     border:none;
     border-radius:50px;
-    background:#e9b5bf;
+    background:rgb(226, 91, 118);
     color:white;
     cursor:pointer;
     transition:.3s;
