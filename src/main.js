@@ -12,7 +12,7 @@ document.querySelector('#app').innerHTML = `
     </p>
 
     <button>
-        Нажми сюда ❤️
+        Я люблю тебя ❤️
     </button>
 </div>
 `
