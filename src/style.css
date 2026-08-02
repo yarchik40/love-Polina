@@ -57,3 +57,52 @@ button:hover{
     50%{transform:scale(1.15);}
     100%{transform:scale(1);}
 }
+
+.heart {
+  font-size: 70px;
+  animation: beat 1s infinite;
+  display: inline-block;
+}
+
+
+@keyframes beat {
+  0% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(1.2);
+  }
+
+  40% {
+    transform: scale(1);
+  }
+
+  60% {
+    transform: scale(1.25);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+button {
+  padding: 15px 35px;
+  font-size: 22px;
+  border: none;
+  border-radius: 40px;
+  background: #ff4d88;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.08);
+}
+
+button:active {
+  transform: scale(0.95);
+}
