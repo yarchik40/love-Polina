@@ -4,7 +4,10 @@ import './style.css'
 // ======================
 
 // Сколько сердечек вылетает при нажатии
-const HEART_COUNT = 20;
+const HEART_COUNT = 30;
+
+// Разные сердечки
+const HEARTS = ["❤️", "💖", "💗", "💝", "💕", "💘"];
 
 // Текст для письма
 const message =
@@ -90,7 +93,8 @@ function typeText(){
 function createHeart() {
     const heart = document.createElement("div");
 
-    heart.innerHTML = "💖";
+    const randomIndex = Math.floor(Math.random() * HEARTS.length);
+    heart.innerHTML = HEARTS[randomIndex];
     heart.style.position = "fixed";
     heart.style.left = Math.random() * window.innerWidth + "px";
     heart.style.top = window.innerHeight + "px";
@@ -146,3 +150,4 @@ button.addEventListener("click", () => {
         createHeart();
     }
 });
+
