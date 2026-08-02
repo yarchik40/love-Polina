@@ -45,7 +45,10 @@ document.querySelector('#app').innerHTML = `
     <button>
         Нажми на кнопку ❤️
     </button>
-    <div class="divider">✦ ✦ ❤️ ✦ ✦</div>
+    <div class="divider">
+    ✦ ✦ ❤️ ✦ ✦
+    </div>
+    
     <div id="letter" class="letter hidden">
     <h2>❤️ Для тебя ❤️</h2>
 
