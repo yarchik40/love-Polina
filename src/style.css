@@ -106,3 +106,34 @@ button:hover {
 button:active {
   transform: scale(0.95);
 }
+
+
+.letter {
+    margin-top: 40px;
+    max-width: 600px;
+    background: rgba(255,255,255,.08);
+    padding: 25px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    transition: .5s;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(40px);
+    pointer-events: none;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.letter h2{
+    margin-bottom:20px;
+}
+
+.letter p{
+    line-height:1.8;
+    font-size:20px;
+}

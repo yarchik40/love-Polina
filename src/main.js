@@ -14,8 +14,13 @@ document.querySelector('#app').innerHTML = `
     <button>
         Нажми на кнопку ❤️
     </button>
+    <div id="letter" class="letter hidden">
+    <h2>❤️ Для тебя ❤️</h2>
+
+    <p id="text"></p>
 </div>
-`
+</div>
+`;
 
 
 const button = document.querySelector("button");
@@ -46,4 +51,52 @@ function createHeart() {
     setTimeout(() => {
         heart.remove();
     }, 3000);
+}
+
+
+const message =
+`Поль...
+
+Я не умею писать красивые стихи, но если ты читаешь это, 
+значит этот сайт всё-таки добрался до тебя. 
+ 
+Я хотел сделать для тебя что-то своими руками.
+
+Поэтому появился этот маленький сайт.
+
+Пусть он напоминает тебе,
+что где-то есть человек,
+которому ты очень сильно нравишься. ❤️`;
+
+const letter = document.getElementById("letter");
+const text = document.getElementById("text");
+
+button.addEventListener("click", () => {
+
+    letter.classList.remove("hidden");
+    letter.classList.add("show");
+
+    typeText();
+
+});
+
+
+function typeText(){
+
+    if(text.textContent.length > 0) return;
+
+    let i = 0;
+
+    const timer = setInterval(()=>{
+
+        text.textContent += message[i];
+
+        i++;
+
+        if(i >= message.length){
+            clearInterval(timer);
+        }
+
+    },35);
+
 }
