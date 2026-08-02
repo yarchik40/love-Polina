@@ -1,6 +1,23 @@
 import './style.css'
 
 document.querySelector('#app').innerHTML = `
+<div class="page">
+    <div class="heart">❤️</div>
+
+    <h1>Привет, Поль!</h1>
+
+    <p>
+        Этот сайт существует только потому,
+        что есть ты.
+    </p>
+
+    <button>
+        Нажми на кнопку ❤️
+    </button>
+</div>
+`
+
+
 const button = document.querySelector("button");
 
 button.addEventListener("click", () => {
@@ -30,19 +47,3 @@ function createHeart() {
         heart.remove();
     }, 3000);
 }
-
-<div class="page">
-    <div class="heart">❤️</div>
-
-    <h1>Привет, Поль!</h1>
-
-    <p>
-        Этот сайт существует только потому,
-        что есть ты.
-    </p>
-
-    <button>
-        Нажми на кнопку ❤️
-    </button>
-</div>
-`
