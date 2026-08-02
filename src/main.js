@@ -1,5 +1,32 @@
 import './style.css'
+// ======================
+// 1. НАСТРОЙКИ ПРОГРАММЫ
+// ======================
 
+// Сколько сердечек вылетает при нажатии
+const HEART_COUNT = 20;
+
+// Текст для письма
+const message =
+`Полин...
+
+Я не умею писать красивые стихи, но если ты читаешь это, 
+значит этот сайт всё-таки добрался до тебя. 
+ 
+Я хотел сделать для тебя что-то своими руками.
+
+Поэтому появился этот маленький сайт.
+
+Пусть он напоминает тебе,
+что где-то есть человек,
+которому ты очень сильно нравишься. ❤️
+Спасибо, что ты есть ❤️`;
+    
+// ======================
+// 2. СОЗДАЁМ HTML СТРАНИЦЫ
+// ======================
+
+// Добавляем весь HTML-код на страницу
 document.querySelector('#app').innerHTML = `
 <div class="page">
     <div class="heart">❤️</div>
@@ -22,15 +49,44 @@ document.querySelector('#app').innerHTML = `
 </div>
 `;
 
+// ======================
+// 3. ПОЛУЧАЕМ ЭЛЕМЕНТЫ СО СТРАНИЦЫ
+// ======================
 
+// Находим кнопку
 const button = document.querySelector("button");
+// Находим письмо
+const letter = document.getElementById("letter");
+// Находим место, куда будет печататься текст
+const text = document.getElementById("text");
 
-button.addEventListener("click", () => {
-    for (let i = 0; i < 20; i++) {
-        createHeart();
-    }
-});
+// ======================
+// 4. ФУНКЦИИ
+// ======================
 
+// Печатает текст по одной букве
+function typeText(){
+
+    if(text.textContent.length > 0) return;
+
+    let i = 0;
+
+    const timer = setInterval(()=>{
+
+        text.textContent += message[i];
+
+        i++;
+
+        if(i >= message.length){
+            clearInterval(timer);
+        }
+
+    },35);
+
+}
+
+
+// Создаёт одно сердечко и запускает его анимацию
 function createHeart() {
     const heart = document.createElement("div");
 
@@ -54,49 +110,39 @@ function createHeart() {
 }
 
 
-const message =
-`Поль...
+// ======================
+// 5. ЗАПУСК ПРОГРАММЫ
+// ======================
 
-Я не умею писать красивые стихи, но если ты читаешь это, 
-значит этот сайт всё-таки добрался до тебя. 
- 
-Я хотел сделать для тебя что-то своими руками.
-
-Поэтому появился этот маленький сайт.
-
-Пусть он напоминает тебе,
-что где-то есть человек,
-которому ты очень сильно нравишься. ❤️`;
-
-const letter = document.getElementById("letter");
-const text = document.getElementById("text");
-
+// Ждём, пока пользователь нажмёт кнопку, показываем письмо, плавно прокручиваем страницу к письму
 button.addEventListener("click", () => {
 
     letter.classList.remove("hidden");
     letter.classList.add("show");
 
-    typeText();
-
+    letter.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
 });
 
 
-function typeText(){
+// Запускаем печать текста
+typeText();
 
-    if(text.textContent.length > 0) return;
+// Через небольшую задержку запускаем сердечки
+setTimeout(() => {
 
-    let i = 0;
-
-    const timer = setInterval(()=>{
-
-        text.textContent += message[i];
-
-        i++;
-
-        if(i >= message.length){
-            clearInterval(timer);
+        for (let i = 0; i < HEART_COUNT; i++) {
+            createHeart();
         }
 
-    },35);
+    }, 400);
 
-}
+});
+
+// создание сердечек после нажатия кнопки
+button.addEventListener("click", () => {
+    for (let i = 0; i < HEART_COUNT; i++) {
+        createHeart();
+    }
+});
